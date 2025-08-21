@@ -6,8 +6,8 @@ for (let i= 6; i<= n; i++){
     else if (i%3==0){
         console.log("Fizz");              
     } 
-    else if (i%8==0){
-        console.log("Buzz");
+    else if (i%6==0){
+   console.log("Buzz");
     }
     else{
     console.log(i)
