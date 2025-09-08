@@ -5,14 +5,9 @@ export class AppService {
   getHello(): string {
     return 'Hola chicos';
   }
-   
+
   //agregado
   getBye(): string {
     return 'Bye chicos';
   }
 }
-
-
-
-
-
