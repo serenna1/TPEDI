@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-
+// aca esta la logica del negocio
 @Injectable()
 export class AppService {
   getHello(): string {
@@ -9,5 +9,9 @@ export class AppService {
   //agregado
   getBye(): string {
     return 'Bye chicos';
+  }
+
+  postCrearUsuario(): string {
+    return 'creando un usuario';
   }
 }

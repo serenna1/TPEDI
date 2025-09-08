@@ -5,7 +5,7 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('hola')
+  @Get('hola') // cuando estan los @ le decimos al frameworks(nest) que estamos haciendo algo especifico
   getHello(): string {
     return this.appService.getHello();
   }
@@ -14,8 +14,8 @@ export class AppController {
     return this.appService.getBye();
   }
 
-  @Post('Usuarios')
+  @Post('usuarios')
   crearUsuario(): string {
-    return 'usuario creado ';
+    return this.appService.postCrearUsuario();
   }
 }
