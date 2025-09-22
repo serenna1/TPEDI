@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
+
 @Injectable()
 export class RestauranteService {
      
@@ -14,7 +15,7 @@ constructor(){
     this.restaurantes.push(restaurant);
     restaurant = {
         "id": "2",
-        "name": "Sushi Tokyo",
+        "name": "Sushi",
         "adress": "Avenida Siempreviva 456",
         "phone": "11223344"
     };
@@ -26,13 +27,40 @@ constructor(){
         "phone": "99887766"
     };
     this.restaurantes.push(restaurant);
-
+}
+    getRestaurants(){
     
-}    
+        return this.restaurantes;
+    }
+    
+    getRestaurantById(id:Number) {
+        //console.log(id); probando
+        for ( const variable of this.restaurantes) {
+            if (variable.id === id) {
+                return variable;
+            }
+        }
+        return "REstaurante no encontrado";
+    }
+
+    getNameRestaurante(name:String) {
+        console.log(name);
+        for ( const variable of this.restaurantes) {
+            if (variable.name === name) {
+                return variable;
+            }
+        }
+        return "Nombre no encontrado";
+    }
+    
+    
 getLista(){
     
 return this.restaurantes;
 }
+
+
+
 
 postCrearRestaurant(): string{
     return "Crear un Restaurante:"
@@ -42,7 +70,12 @@ putActualizarRestaurante() :string{
     return "Actualizar un Restaurante"
 }
 
-borrarRestaurante() :string{
+borrarRestaurante(id: Number) :string{
+    const index = this.restaurantes.findIndex(n => n.id === id);
+    if(index === -1){
+        return "Su restaurante no se encuentra";
+    }
+    this.restaurantes.splice(index,1);
     return "Borrar un Restaurante"
 }
 

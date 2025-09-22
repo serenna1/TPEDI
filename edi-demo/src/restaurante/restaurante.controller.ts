@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import { Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { RestauranteService } from './restaurante.service';
 
 
@@ -11,6 +11,16 @@ getRestaurant(){
     return this.restauranteService.getLista();
 }
 
+@Get(':id')
+getBuscarId(@Param('id') idRestaurant:Number) {
+    return this.restauranteService.getRestaurantById(idRestaurant);
+}
+@Get('/name/:name')
+getbuscarName(@Param('name')NameRestaurant:String){
+    return this.restauranteService.getNameRestaurante(NameRestaurant);
+
+}
+
 @Post('crear')
 postCrearRestaurante(): string{
     return this.restauranteService.postCrearRestaurant();
@@ -21,11 +31,12 @@ putActulizaRestaurante(): string{
     return this.restauranteService.putActualizarRestaurante();
 }
 
-@Delete('borrar')
-deleteRestaurante(): string{
-    return this.restauranteService.borrarRestaurante();
+@Delete('borrar/:id')
+deleteRestaurante(@Param('id') idRestaurant:Number): string{
+    return this.restauranteService.borrarRestaurante(idRestaurant);
 
 }
+
 
 
 }
